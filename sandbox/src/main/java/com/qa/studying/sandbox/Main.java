@@ -8,6 +8,8 @@ public class Main {
 
         System.out.println("Distance between p1 with coordinates: (" + p1.x + ";" + p1.y + ") and p2 with coordinates: (" + p2.x + ";" + p2.y + ") = " + p1.distance(p2));
 
+
+
     }
 
 }
