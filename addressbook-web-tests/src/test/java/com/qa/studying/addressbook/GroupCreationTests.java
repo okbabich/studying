@@ -20,15 +20,19 @@ public class GroupCreationTests {
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
+    System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Geckodriver\\geckodriver.exe");
     driver = new FirefoxDriver();
-    driver.get("http//www.google.com");
+    driver.get("https://www.katalon.com/");
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Geckodriver\\geckodriver.exe");
+
   }
+
+
 
   @Test
   public void testGroupCreationTests() throws Exception {
+
     driver.get("http://localhost/addressbook/group.php");
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
