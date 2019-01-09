@@ -21,7 +21,6 @@ public class ContactCreationTests {
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     login("admin", "secret");
-
   }
 
   private void login(String username, String password) {
@@ -37,7 +36,7 @@ public class ContactCreationTests {
   @Test
   public void testContactCreation() throws Exception {
     initContactCreation();
-    fillContactForm("Vadim", "Didenko", "Kharkiv", "0968574123", "vadim@gmail.com");
+    fillContactForm(new ContactData("Vadim", "Didenko", "Kharkiv", "0968574123", "vadim@gmail.com"));
     returnToHomePage();
   }
 
@@ -46,23 +45,23 @@ public class ContactCreationTests {
   }
 
 
-  private void fillContactForm(String first_name, String last_name, String address, String mobile_phone, String mail) {
+  private void fillContactForm(ContactData contactData) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys(first_name);
+    driver.findElement(By.name("firstname")).sendKeys(contactData.getFirst_name());
     driver.findElement(By.name("lastname")).click();
     driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys(last_name);
+    driver.findElement(By.name("lastname")).sendKeys(contactData.getLast_name());
     driver.findElement(By.name("address")).click();
     driver.findElement(By.name("address")).click();
     driver.findElement(By.name("address")).clear();
-    driver.findElement(By.name("address")).sendKeys(address);
+    driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
     driver.findElement(By.name("mobile")).click();
     driver.findElement(By.name("mobile")).clear();
-    driver.findElement(By.name("mobile")).sendKeys(mobile_phone);
+    driver.findElement(By.name("mobile")).sendKeys(contactData.getMobile_phone());
     driver.findElement(By.name("email")).click();
     driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys(mail);
+    driver.findElement(By.name("email")).sendKeys(contactData.getMail());
     driver.findElement(By.name("bday")).click();
     new Select(driver.findElement(By.name("bday"))).selectByVisibleText("31");
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[33]")).click();
