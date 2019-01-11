@@ -5,9 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import java.util.concurrent.TimeUnit;
-
 import static org.testng.Assert.fail;
 
 public class TestBase {
@@ -18,7 +16,7 @@ public class TestBase {
 
     @BeforeClass(alwaysRun = true)
 
-    public void setUp()  throws Exception{
+    public void setUp() {
       System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Geckodriver\\geckodriver.exe");
       driver = new FirefoxDriver();
       driver.get("http://localhost/addressbook/group.php");
@@ -67,10 +65,9 @@ public class TestBase {
       driver.findElement(By.linkText("groups")).click();
     }
 
-    protected void gotoHomePage() {
-        driver.findElement(By.linkText("home page")).click();
+    protected void initContactCreation() {
+        driver.findElement(By.linkText("add new")).click();
     }
-
     protected void fillContactForm(ContactData contactData) {
         driver.findElement(By.name("firstname")).click();
         driver.findElement(By.name("firstname")).clear();
@@ -97,12 +94,13 @@ public class TestBase {
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
     }
 
-    protected void initContactCreation() {
-        driver.findElement(By.linkText("add new")).click();
+    protected void gotoHomePage() {
+        driver.findElement(By.linkText("home page")).click();
     }
+
     @AfterClass(alwaysRun = true)
 
-    public void tearDown() throws Exception{
+    public void tearDown(){
       driver.quit();
       String verificationErrorString = verificationErrors.toString();
       if (!"".equals(verificationErrorString)) {
@@ -142,6 +140,4 @@ public class TestBase {
         acceptNextAlert = true;
       }
     }
-
-
 }
