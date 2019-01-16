@@ -1,5 +1,6 @@
-package com.qa.studying.addressbook;
+package com.qa.studying.addressbook.tests;
 
+import com.qa.studying.addressbook.model.ContactData;
 import org.testng.annotations.*;
 
 public class ContactCreationTests extends TestBase {

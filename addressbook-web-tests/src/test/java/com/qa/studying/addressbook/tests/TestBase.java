@@ -1,5 +1,6 @@
-package com.qa.studying.addressbook;
+package com.qa.studying.addressbook.tests;
 
+import com.qa.studying.addressbook.appmanager.ApplicationManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 

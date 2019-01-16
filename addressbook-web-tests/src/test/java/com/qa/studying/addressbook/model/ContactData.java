@@ -1,4 +1,4 @@
-package com.qa.studying.addressbook;
+package com.qa.studying.addressbook.model;
 
 public class ContactData {
     private final String first_name;

@@ -1,5 +1,7 @@
-package com.qa.studying.addressbook;
+package com.qa.studying.addressbook.appmanager;
 
+import com.qa.studying.addressbook.model.ContactData;
+import com.qa.studying.addressbook.model.GroupData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -14,7 +16,7 @@ public class ApplicationManager {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    protected void init() {
+    public void init() {
         System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\Geckodriver\\geckodriver.exe");
         driver = new FirefoxDriver();
         driver.get("http://localhost/addressbook/group.php");
@@ -35,15 +37,15 @@ public class ApplicationManager {
       driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]")).click();
     }
 
-    protected void returnToGroupPage() {
+    public void returnToGroupPage() {
       driver.findElement(By.linkText("group page")).click();
     }
 
-    protected void submitGroupCreation() {
+    public void submitGroupCreation() {
       driver.findElement(By.name("submit")).click();
     }
 
-    protected void fillGroupForm(GroupData groupData) {
+    public void fillGroupForm(GroupData groupData) {
       driver.findElement(By.name("group_name")).click();
       driver.findElement(By.name("group_name")).clear();
       driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -55,19 +57,19 @@ public class ApplicationManager {
       driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
     }
 
-    protected void initGroupCreation() {
+    public void initGroupCreation() {
       driver.findElement(By.name("new")).click();
     }
 
-    protected void gotoGroupPage() {
+    public void gotoGroupPage() {
       driver.findElement(By.linkText("groups")).click();
     }
 
-    protected void initContactCreation() {
+    public void initContactCreation() {
         driver.findElement(By.linkText("add new")).click();
     }
 
-    protected void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData) {
         driver.findElement(By.name("firstname")).click();
         driver.findElement(By.name("firstname")).clear();
         driver.findElement(By.name("firstname")).sendKeys(contactData.getFirst_name());
@@ -93,11 +95,11 @@ public class ApplicationManager {
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
     }
 
-    protected void gotoHomePage() {
+    public void gotoHomePage() {
         driver.findElement(By.linkText("home page")).click();
     }
 
-    protected void stop() {
+    public void stop() {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
@@ -105,7 +107,7 @@ public class ApplicationManager {
         }
     }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
       try {
         driver.findElement(by);
         return true;
@@ -114,7 +116,7 @@ public class ApplicationManager {
       }
     }
 
-    private boolean isAlertPresent() {
+    public boolean isAlertPresent() {
       try {
         driver.switchTo().alert();
         return true;
@@ -123,7 +125,7 @@ public class ApplicationManager {
       }
     }
 
-    private String closeAlertAndGetItsText() {
+    public String closeAlertAndGetItsText() {
       try {
         Alert alert = driver.switchTo().alert();
         String alertText = alert.getText();
