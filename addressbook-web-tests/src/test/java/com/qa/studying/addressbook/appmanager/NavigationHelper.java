@@ -3,19 +3,18 @@ package com.qa.studying.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class NavigationHelper {
+public class NavigationHelper extends HelperBase{
 
-    private WebDriver driver;
 
     public NavigationHelper(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void gotoGroupPage() {
-        driver.findElement(By.linkText("groups")).click();
+        click(By.linkText("groups"));
     }
 
     public void gotoHomePage() {
-        driver.findElement(By.linkText("home page")).click();
+        click(By.linkText("home page"));
     }
 }
