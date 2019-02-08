@@ -20,12 +20,22 @@ public class GroupHelper extends HelperBase{
         type(By.name("group_footer"), groupData.getFooter());
     }
 
-    public void returnToGroupPage() {
-        click(By.linkText("group page"));
-    }
 
     public void submitGroupCreation() {
         click(By.name("submit"));
     }
+
+    public void selectGroup(){
+        click(By.name("selected[]"));
+    }
+
+    public void deleteSelectedGroups(){
+        click(By.name("delete"));
+    }
+
+/*   public void deleteSelectedGroups(){
+       click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='test2'])[1]/following::input[2]"));
+    }
+*/
 
 }
